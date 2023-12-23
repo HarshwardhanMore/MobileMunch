@@ -23,6 +23,8 @@ const addProduct = async (req, res) => {
     os,
   } = req.body;
 
+  const { filename } = req.file; // Assuming you are using Multer for file upload
+
   try {
     const newProduct = new Product({
       brand,
@@ -33,6 +35,7 @@ const addProduct = async (req, res) => {
       cameraPixels,
       selfieCameraPixels,
       os,
+      image: `uploads/${filename}`, // Include the relative path
     });
 
     await newProduct.save();

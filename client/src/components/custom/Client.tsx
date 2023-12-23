@@ -8,6 +8,7 @@ import Product from "./Pages/Product"
 import Products from "./Pages/Products"
 import WishlistPage from "./Pages/WishlistPage"
 import CartPage from "./Pages/CartPage"
+import UploadProduct from "./Pages/UploadProduct"
 
 function Client({data}: any) {
   return (
@@ -33,6 +34,7 @@ function Client({data}: any) {
 
           <Route path="/wishlist" element={<WishlistPage/>}/>
           <Route path="/cart" element={<CartPage/>}/>
+          <Route path="/contribute" element={<UploadProduct />}/>
 
           
         </Routes>

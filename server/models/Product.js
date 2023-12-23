@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
   cameraPixels: String,
   selfieCameraPixels: String,
   os: String,
+  image: String, // Add the image field
 });
 
 const Product = mongoose.model('Product', productSchema);

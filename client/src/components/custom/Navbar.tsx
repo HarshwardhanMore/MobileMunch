@@ -58,7 +58,7 @@ function Navbar() {
                 <Link to="/products" className=" mx-4 sm:hidden">Products</Link>
                 <Link to="/brands" className=" mx-4 sm:hidden">Brands</Link>
                 <Link to="/blogs" className=" mx-4 sm:hidden">Blogs</Link>
-                <Link to="/business" className=" mx-4 sm:hidden">Business</Link>
+                <Link to="/contribute" className=" mx-4 sm:hidden">Contribute</Link>
                 <DropdownMenu>
                     <DropdownMenuTrigger  className=" mx-4 lg:hidden md:hidden"><Menu /></DropdownMenuTrigger>
                     <DropdownMenuContent>
