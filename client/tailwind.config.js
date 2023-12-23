@@ -17,6 +17,13 @@ module.exports = {
     },
     extend: {
       colors: {
+        "primary-color": "var(--primary-color)",
+        "primary-lite-color": "var(--primary-lite-color)",
+        "secondary-color": "var(--secondary-color)",
+        "bg-color": "var(--bg-color)",
+        "bg-lite-color": "var(--bg-lite-color)",
+        "text-color": "var(--text-color)",
+        "text-lite-color": "var(--text-lite-color)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -70,6 +77,23 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      screens: {
+        'sm': {'min': '340px', 'max': '799px'},
+        // 'sm': {'max': '340px', 'max': '639px'},
+  
+        'md': {'min': '800px', 'max': '1023px'},
+        // 'md': {'min': '640px', 'max': '1023px'},
+  
+        'lg': {'min': '1024px'},
+        // 'lg': {'min': '1024px', 'max': '1279px'},
+  
+        // 'xl': {'min': '1280px', 'max': '1535px'},
+  
+        // '2xl': {'min': '1536px'},
+      },
+      fontFamily: {
+        "Oxygen": ['Oxygen', "sans-serif"]
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
