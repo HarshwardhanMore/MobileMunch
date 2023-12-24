@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': 'http://localhost:5000'
+      '/api': 'https://mobilemunch.onrender.com'
     }
   },
   plugins: [react()],
