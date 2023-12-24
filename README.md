@@ -2,7 +2,7 @@
 
 1) Clone the repository or Download and unzip the repository
 2) Open one terminal in the root directory.
-3) In Terminal 1, run the commands
+3) In Terminal 1, run the commands <br />
      a) **cd server** <br />
             ![image](https://github.com/HarshwardhanMore/MobileMunch/assets/87003053/677fbdcb-6db8-4ada-9559-4160625b46e5) <br />
      b) npm install <br />
@@ -11,7 +11,7 @@
             ![image](https://github.com/HarshwardhanMore/MobileMunch/assets/87003053/0adfd724-a9e8-41fb-8658-08fc7cbe8fd4) <br />
         
 6) Open another independent terminal in the root directory. 
-7) In Terminal 2, run the commands 
+7) In Terminal 2, run the commands  <br />
    a) **cd client** <br />
           ![image](https://github.com/HarshwardhanMore/MobileMunch/assets/87003053/25865507-2c89-49ff-9072-bb3346f1643c) <br />
    b) npm install <br /> 
