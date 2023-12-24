@@ -1,12 +1,12 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { CheckSquare } from 'lucide-react'
-import { useLocation } from 'react-router-dom';
-import Loader from '../Loader';
-import { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { useUser } from '@clerk/clerk-react';
+import axios from 'axios';
+import { CheckSquare } from 'lucide-react';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Loader from '../Loader';
 
 
 function Product() {
@@ -25,7 +25,7 @@ function Product() {
 
   const { isSignedIn, user, isLoaded } = useUser();
 
-  if (!isLoaded) {
+  if (!isLoaded || loading) {
       return <Loader/>;
   }
       
@@ -41,7 +41,7 @@ function Product() {
   const addToWishlist = async () => {
       try {
           setLoading(true);
-          const response = await axios.post(`http://localhost:5000/api/wishlist/${userId}/add`, {
+          const response = await axios.post(`/api/wishlist/${userId}/add`, {
               productId: state?.data?._id,
           });
 

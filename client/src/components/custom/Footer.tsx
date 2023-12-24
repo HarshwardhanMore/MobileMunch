@@ -1,7 +1,6 @@
-import React from 'react';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
