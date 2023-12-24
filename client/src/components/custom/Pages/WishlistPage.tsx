@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Filter } from 'lucide-react';
-import { toast } from 'react-toastify';
-import { useUser } from "@clerk/clerk-react";
-import Loader from "../Loader";
-import axios from "axios";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useUser } from "@clerk/clerk-react";
+import axios from "axios";
+import { Filter } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import Loader from "../Loader";
 import WishlistCard from "../WishlistCard";
 
 const WishlistPage = () => {
@@ -44,6 +43,11 @@ const WishlistPage = () => {
 
   const uniqueNames = Array.from(new Set(data));
   console.log(uniqueNames);
+
+    
+  if (loading) {
+    return <Loader/>;
+  }
   
   // const [data2, setData2] = useState([]);
   

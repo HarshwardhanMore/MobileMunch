@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Filter } from 'lucide-react';
-import { toast } from 'react-toastify';
-import { useUser } from "@clerk/clerk-react";
-import Loader from "../Loader";
-import axios from "axios";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import CartCard from "../CartCard";
-import { Input } from '@/components/ui/input';
-import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from '@/components/ui/button';
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from '@/components/ui/input';
+import { useUser } from "@clerk/clerk-react";
+import axios from "axios";
+import { useEffect, useState } from 'react';
+import CartCard from "../CartCard";
+import Loader from "../Loader";
 
 const CartPage = () => {
 
@@ -58,6 +55,10 @@ const CartPage = () => {
     // Add the parsed integer to the total
     return total + priceAsInteger;
   }, 0);
+
+  if (loading) {
+    return <Loader/>;
+  }
 
   return (
     <div className='w-full h-full flex justify-center items-center overflow-y-scroll'>

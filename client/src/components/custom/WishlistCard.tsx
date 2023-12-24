@@ -6,21 +6,16 @@ import { Badge } from "../ui/badge"
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
-import { Button } from "../ui/button"
-import { Link, useNavigate } from "react-router-dom"
+    DialogTrigger
+} from "@/components/ui/dialog"
+import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import { Button } from "../ui/button"
 
-import { redirect } from "react-router-dom";
 
-import { useUser } from "@clerk/clerk-react";
-import Loader from "./Loader"
-import { useEffect, useState } from "react"
+import { useUser } from "@clerk/clerk-react"
 import axios from "axios"
+import Loader from "./Loader"
 
 
 
@@ -35,10 +30,8 @@ import axios from "axios"
 //   };
 // }
 
-const WishlistCard = ({ data, wishlist }: any) => {
+const WishlistCard = ({ data }: any) => {
     
-    const [loading, setLoading] = useState(false);
-
     const { isSignedIn, user, isLoaded } = useUser();
 
     if (!isLoaded) {
@@ -55,28 +48,9 @@ const WishlistCard = ({ data, wishlist }: any) => {
     console.log(userId);
     
 
-    const addToWishlist = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.post(`http://localhost:5000/api/wishlist/${userId}/add`, {
-                productId: data._id,
-            });
-
-            if (response.status === 200) {
-                toast.success("Product added to wishlist successfully!")
-            } else {
-                toast.error("Failed to add product to wishlist!")
-            }
-        } catch (error) {
-            toast.error("Failed to add product to wishlist!" + error)
-        } finally {
-        setLoading(false);
-        }
-    };
 
     const removeFromWishlist = async () => {
         try {
-            setLoading(true);
             const response = await axios.delete(`http://localhost:5000/api/wishlist/${userId}/remove/${data._id}`);
 
             if (response.status === 200) {
@@ -87,14 +61,12 @@ const WishlistCard = ({ data, wishlist }: any) => {
         } catch (error) {
             toast.error("Failed to remove product from wishlist!" + error)
         } finally {
-                setLoading(false);
                 window.location.reload();
         }
     };
 
     const addToCart = async () => {
         try {
-        setLoading(true);
         const response = await axios.post(`http://localhost:5000/api/carts/${userId}/add`, {
             productId: data._id,
         });
@@ -107,7 +79,6 @@ const WishlistCard = ({ data, wishlist }: any) => {
         } catch (error) {
             toast.error("Failed to add product to cart!" + error)
         } finally {
-            setLoading(false);
         }
     };
     

@@ -1,12 +1,11 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { CheckSquare } from 'lucide-react'
-import { useLocation } from 'react-router-dom';
-import Loader from '../Loader';
-import { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { useUser } from '@clerk/clerk-react';
+import axios from 'axios';
+import { CheckSquare } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Loader from '../Loader';
 
 
 function Product() {
@@ -21,13 +20,13 @@ function Product() {
   const { state } = useLocation();
 
   
-  const [loading, setLoading] = useState(false);
 
   const { isSignedIn, user, isLoaded } = useUser();
 
   if (!isLoaded) {
       return <Loader/>;
   }
+
       
   if (!isSignedIn || !user) {
       return <div>You are not signed in.</div>;
@@ -40,7 +39,6 @@ function Product() {
 
   const addToWishlist = async () => {
       try {
-          setLoading(true);
           const response = await axios.post(`http://localhost:5000/api/wishlist/${userId}/add`, {
               productId: state?.data?._id,
           });
@@ -53,13 +51,11 @@ function Product() {
       } catch (error) {
           toast.error("Failed to add product to wishlist!" + error)
       } finally {
-      setLoading(false);
       }
   };
 
   const addToCart = async () => {
       try {
-      setLoading(true);
       const response = await axios.post(`http://localhost:5000/api/carts/${userId}/add`, {
           productId: state?.data?._id,
       });
@@ -72,9 +68,11 @@ function Product() {
       } catch (error) {
           toast.error("Failed to add product to cart!" + error)
       } finally {
-      setLoading(false);
       }
   };
+
+  
+
 
   return (
     <div className=' w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll '>

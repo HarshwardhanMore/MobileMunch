@@ -110,17 +110,9 @@
 
 // ProductForm.tsx
 
-import { Input } from '@/components/ui/input';
-import axios from 'axios';
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { Button } from '@/components/ui/button';
+import axios from 'axios';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 
 
@@ -202,6 +194,8 @@ const ProductForm: React.FC = () => {
     // Send the productData to the server using axios or fetch
     // console.log('Product Data:', productData);
   };
+
+  
 
   return (
     <div className=' w-full h-full flex justify-center'>

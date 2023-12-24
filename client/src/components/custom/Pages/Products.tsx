@@ -52,28 +52,21 @@
 // export default Products
 
 
-import React, { useEffect, useState } from 'react';
-import Card from '../Card';
-import { Filter, RouteOff, Search } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import axios from 'axios';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Filter, RouteOff, Search } from 'lucide-react';
+import React, { useState } from 'react';
+import Card from '../Card';
 
 
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
+  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
-  DrawerFooter,
-} from "@/components/ui/drawer"
-import { Slider } from '@/components/ui/slider';
-import Loader from '../Loader';
-import { useUser } from '@clerk/clerk-react';
+  DrawerTrigger
+} from "@/components/ui/drawer";
 
 
 function Products({data}:any) {
@@ -170,7 +163,6 @@ function Products({data}:any) {
   const typeSet = new Set();
   const osSet = new Set();
   const chargingSet = new Set();
-  const priceSet = new Set();
 
 
   for(let obj of data){
@@ -184,7 +176,6 @@ function Products({data}:any) {
     typeSet.add(obj['type']);
     osSet.add(obj['os']);
     chargingSet.add(obj['charging']);
-    priceSet.add(parseInt(obj['price']));
   }
 
   // console.log(priceSet);
@@ -200,8 +191,6 @@ function Products({data}:any) {
   const typeArray = Array.from(typeSet);
   const osArray = Array.from(osSet);
   const chargingArray = Array.from(chargingSet);
-  const priceArray = Array.from(priceSet);
-
 
   // const maxPrice = Math.max(...priceArray);
 
