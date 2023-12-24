@@ -1,4 +1,7 @@
-import Card from '../Card';
+import React from 'react'
+import Card from '../Card'
+import { Link } from 'react-router-dom'
+import { ChevronRight } from 'lucide-react'
 
 function FeaturedProducts({data}: any) {
 

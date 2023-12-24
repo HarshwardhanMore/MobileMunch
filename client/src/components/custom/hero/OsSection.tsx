@@ -1,4 +1,4 @@
-import { SignedIn } from "@clerk/clerk-react"
+import { SignedIn, SignedOut } from "@clerk/clerk-react"
 import { ChevronRight } from "lucide-react"
 import { Link } from "react-router-dom"
 

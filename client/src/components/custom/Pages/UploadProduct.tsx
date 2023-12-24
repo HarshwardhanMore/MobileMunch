@@ -110,9 +110,17 @@
 
 // ProductForm.tsx
 
-import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import axios from 'axios';
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Button } from '@/components/ui/button';
 import { toast } from 'react-toastify';
 
 
@@ -176,7 +184,7 @@ const ProductForm: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('/api/products/add', formData, {
+      const response = await axios.post('http://localhost:5000/api/products/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
