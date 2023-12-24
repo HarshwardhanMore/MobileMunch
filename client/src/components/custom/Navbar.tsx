@@ -1,13 +1,12 @@
 
-import { Heart, Menu, Search, ShoppingCart, UserRound } from "lucide-react"
-import { Link } from "react-router-dom"
 import { Input } from "@/components/ui/input"
+import { Heart, Menu, Search, ShoppingCart } from "lucide-react"
+import { Link } from "react-router-dom"
 import { Button } from "../ui/button"
 
 import { ModeToggle } from "./mode-toggle"
 
 import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react"
-import { RedirectToSignIn } from "@clerk/clerk-react"
 
 import {
     DropdownMenu,
@@ -16,9 +15,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 
-import { SignInButton } from "@clerk/clerk-react";
+import { SignInButton } from "@clerk/clerk-react"
 
 function Navbar() {
   return (
