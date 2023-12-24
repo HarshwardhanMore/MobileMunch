@@ -51,7 +51,7 @@ const WishlistCard = ({ data }: any) => {
 
     const removeFromWishlist = async () => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/wishlist/${userId}/remove/${data._id}`);
+            const response = await axios.delete(`/api/wishlist/${userId}/remove/${data._id}`);
 
             if (response.status === 200) {
                 toast.success("Product removed from wishlist successfully!")
@@ -67,7 +67,7 @@ const WishlistCard = ({ data }: any) => {
 
     const addToCart = async () => {
         try {
-        const response = await axios.post(`http://localhost:5000/api/carts/${userId}/add`, {
+        const response = await axios.post(`/api/carts/${userId}/add`, {
             productId: data._id,
         });
 

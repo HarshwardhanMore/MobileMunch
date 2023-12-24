@@ -35,7 +35,7 @@ function Client() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/products'); // Replace with your API endpoint
+        const response = await axios.get('/api/products'); // Replace with your API endpoint
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

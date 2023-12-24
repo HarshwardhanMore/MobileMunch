@@ -50,7 +50,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
     const addToWishlist = async () => {
         try {
             // setLoading(true);
-            const response = await axios.post(`http://localhost:5000/api/wishlist/${userId}/add`, {
+            const response = await axios.post(`/api/wishlist/${userId}/add`, {
                 productId: data._id,
             });
 
@@ -69,7 +69,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
     const addToCart = async () => {
         try {
         // setLoading(true);
-        const response = await axios.post(`http://localhost:5000/api/carts/${userId}/add`, {
+        const response = await axios.post(`/api/carts/${userId}/add`, {
             productId: data._id,
         });
 

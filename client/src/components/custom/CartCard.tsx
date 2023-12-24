@@ -54,7 +54,7 @@ const CartCard = ({ data }: any) => {
     const removeFromCart = async () => {
         try {
             // setLoading(true);
-            const response = await axios.delete(`http://localhost:5000/api/carts/${userId}/remove/${data._id}`);
+            const response = await axios.delete(`/api/carts/${userId}/remove/${data._id}`);
 
             if (response.status === 200) {
                 toast.success("Product removed from cart successfully!")
@@ -72,7 +72,7 @@ const CartCard = ({ data }: any) => {
     const addToCart = async () => {
         try {
         // setLoading(true);
-        const response = await axios.post(`http://localhost:5000/api/carts/${userId}/add`, {
+        const response = await axios.post(`/api/carts/${userId}/add`, {
             productId: data._id,
         });
 

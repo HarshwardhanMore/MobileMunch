@@ -39,7 +39,7 @@ function Product() {
 
   const addToWishlist = async () => {
       try {
-          const response = await axios.post(`http://localhost:5000/api/wishlist/${userId}/add`, {
+          const response = await axios.post(`/api/wishlist/${userId}/add`, {
               productId: state?.data?._id,
           });
 

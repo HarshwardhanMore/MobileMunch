@@ -176,7 +176,7 @@ const ProductForm: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/products/add', formData, {
+      const response = await axios.post('/api/products/add', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

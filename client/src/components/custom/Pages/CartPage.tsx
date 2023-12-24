@@ -29,7 +29,7 @@ const CartPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/carts/${userId}`); // Replace with your API endpoint
+        const response = await axios.get(`/api/carts/${userId}`); // Replace with your API endpoint
         setData(response.data.products);
       } catch (error) {
         console.error('Error fetching data:', error);
