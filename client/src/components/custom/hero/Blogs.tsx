@@ -2,7 +2,9 @@
 
 function Blogs() {
   return (
-    <div>Blogs</div>
+    <div className=" flex h-full w-full items-center justify-center">
+      There are No Active Blogs Available.
+    </div>
   )
 }
 

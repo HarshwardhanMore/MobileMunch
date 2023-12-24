@@ -2,7 +2,8 @@
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
-
+import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import { Link } from 'react-router-dom';
 
 
 const Carousel1 = ({ images, headings, descriptions, interval = 5000 }: any) => {
@@ -55,7 +56,9 @@ const Carousel1 = ({ images, headings, descriptions, interval = 5000 }: any) => 
                 <div className=' text-slate-500 my-4'>
                   {descriptions[index]}
                 </div>
-                <Button className=' bg-primary-color my-4'>Shop Now</Button>
+                <SignedIn>
+                  <Button className=' bg-primary-color my-4'><Link to="/products">Shop Now</Link></Button>
+                </SignedIn>
               </div>
               <div className=' h-full w-1/2 flex justify-start items-center'>
                 <img src={img} alt={`Slide ${index + 1}`} className=' w-auto h-[90%]' />

@@ -13,6 +13,7 @@ import OtherAccesories from "./OtherAccesories";
 import { Routes, Route } from "react-router-dom";
 import Carousel1Sm from "./Carousel1Sm";
 import Carousel2Sm from "./Carousel2Sm";
+import Footer from "../Footer";
 
 function HeroPage({ data }: any) {
   return (
@@ -37,7 +38,7 @@ function HeroPage({ data }: any) {
 
 
         <div className=" w-[100%] h-[12%] flex justify-center items-center">
-            <div className=" w-[90%] flex items-center font-semibold text-xl">Poppular Operating Systems</div>
+            <div className=" w-[90%] flex items-center font-semibold text-xl">Popular Operating Systems</div>
         </div>
         <div className="  w-full h-1/4 sm:h-auto">
             <OsSection/>
@@ -60,13 +61,13 @@ function HeroPage({ data }: any) {
 
 
         <div className="w-full bg-primary-lite-color h-3/4 sm:hidden">
-            <Carousel2 images={["/mobile-images/iphone-14-pro-max-colors.png", "/mobile-images/s23seriesgroup.jpg", "/mobile-images/OnePlus-Nord-3-1019x573.avif"]} 
-                        headings={["IPhones", "Samsung Note", "OnePlus Series"]} 
+            <Carousel2 images={["/mobile-images/iPhone-11-3.jpg", "/mobile-images/All-the-iphones-2023-to-2024-1.jpg", "https://www.macworld.com/wp-content/uploads/2023/01/iphone_13_group_shots_review_5-1.jpg?quality=50&strip=all"]} 
+                        headings={["Old is Gold Iphone 11 Refurbished", "IPhones 14 New lanches", "IPhone Ecosystem Series"]} 
                         descriptions={["lorem lorem lorem lorem lorem lorem lorem lorem", "lorem lorem lorem lorem lorem lorem lorem lorem", "lorem lorem lorem lorem lorem lorem lorem lorem"]}/>
         </div>
         <div className="w-full bg-primary-lite-color h-3/4 lg:hidden md:hidden">
-            <Carousel2Sm images={["/mobile-images/iphone-14-pro-max-colors.png", "/mobile-images/s23seriesgroup.jpg", "/mobile-images/OnePlus-Nord-3-1019x573.avif"]} 
-                        headings={["IPhones", "Samsung Note", "OnePlus Series"]} 
+            <Carousel2Sm images={["/mobile-images/iPhone-11-3.jpg", "/mobile-images/All-the-iphones-2023-to-2024-1.jpg", "https://www.macworld.com/wp-content/uploads/2023/01/iphone_13_group_shots_review_5-1.jpg?quality=50&strip=all"]} 
+                        headings={["Old is Gold Iphone 11 Refurbished", "IPhones 14 New lanches", "IPhone Ecosystem Series"]} 
                         descriptions={["lorem lorem lorem lorem lorem lorem lorem lorem", "lorem lorem lorem lorem lorem lorem lorem lorem", "lorem lorem lorem lorem lorem lorem lorem lorem"]}/>
         </div>
 
@@ -76,7 +77,7 @@ function HeroPage({ data }: any) {
 
 
 
-        <div className=" w-[100%] h-[12%] flex justify-center items-center ">
+        {/* <div className=" w-[100%] h-[12%] flex justify-center items-center ">
             <div className=" w-[90%] flex items-center justify-between ">
                 <div className='  font-semibold text-xl'>Other Accesories</div>
                 <Link to="" className=' flex items-center text-sm'>Explore More <ChevronRight color='gray' size={16}/></Link>
@@ -84,7 +85,7 @@ function HeroPage({ data }: any) {
         </div>
         <div className=" w-full h-[100%]  sm:h-auto">
             <OtherAccesories/>
-        </div>
+        </div> */}
         
 
 
@@ -117,7 +118,7 @@ function HeroPage({ data }: any) {
             
         </div>
         <div className=" w-full h-1/2 bg-text-color">
-            <Bottom/>
+            <Footer/>
         </div>
 
     </div>

@@ -24,7 +24,7 @@ const addToWishlist = async (req, res) => {
     if (!wishlist) {
       wishlist = new Wishlist({ userId, products: [] });
     }
-
+    
     wishlist.products.push(product);
     await wishlist.save();
 

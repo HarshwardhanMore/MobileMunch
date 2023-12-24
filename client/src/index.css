@@ -6,7 +6,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 4px;
 }
 
 /* Track */
@@ -31,7 +31,7 @@
     --primary-color: #087cfc;
     --primary-lite-color: #f2f6fc;
     --secondary-color: #ee8434;
-    --bg-color: #fffcfc;
+    --bg-color: white;
     --bg-lite-color: #fffcfc81;
     --text-color: black;
     --text-lite-color: rgba(0, 0, 0, 0.5);
@@ -73,10 +73,10 @@
     --primary-color: #087cfc;
     --primary-lite-color: rgba(255, 255, 255, 0.048);
     --secondary-color: #ee8434;
-    --bg-color: #fffcfc;
-    --bg-lite-color: #fffcfc81;
-    --text-color: black;
-    --text-lite-color: rgba(0, 0, 0, 0.5);
+    --bg-color: black;
+    --bg-lite-color: rgba(0, 0, 0, 0.5);
+    --text-color: white;
+    --text-lite-color: #fffcfc81;
 
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;

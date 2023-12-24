@@ -13,6 +13,8 @@ const getAllProducts = async (req, res) => {
 
 const addProduct = async (req, res) => {
   const {
+    name,
+    description,
     brand,
     ram,
     processor,
@@ -20,13 +22,18 @@ const addProduct = async (req, res) => {
     refreshRate,
     cameraPixels,
     selfieCameraPixels,
+    type, // ios, android
     os,
+    charging,
+    price
   } = req.body;
 
   const { filename } = req.file; // Assuming you are using Multer for file upload
 
   try {
     const newProduct = new Product({
+      name,
+      description,
       brand,
       ram,
       processor,
@@ -34,7 +41,10 @@ const addProduct = async (req, res) => {
       refreshRate,
       cameraPixels,
       selfieCameraPixels,
+      type, // ios, android
       os,
+      charging,
+      price,
       image: `uploads/${filename}`, // Include the relative path
     });
 

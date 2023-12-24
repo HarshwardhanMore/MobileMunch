@@ -1,6 +1,6 @@
 // Card.tsx
 
-import { ArrowRightLeft, Heart } from "lucide-react"
+import { ArrowRightLeft, Heart, X } from "lucide-react"
 import { Badge } from "../ui/badge"
 
 import {
@@ -21,20 +21,21 @@ import { useUser } from "@clerk/clerk-react";
 import Loader from "./Loader"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { SignedIn, SignedOut } from "@clerk/clerk-react"
 
-interface CardProps {
-  data: {
-    _id: string;
-    type: string;
-    name: string;
-    price: string;
-    description: string;
-    image: string;
-  };
-}
 
-const Card: React.FC<CardProps> = ({ data }) => {
+
+// interface CardProps {
+//   data: {
+//     _id: string;
+//     type: string;
+//     name: string;
+//     price: string;
+//     description: string;
+//     image: string;
+//   };
+// }
+
+const CartCard = ({ data, wishlist }: any) => {
     
     const [loading, setLoading] = useState(false);
 
@@ -45,7 +46,8 @@ const Card: React.FC<CardProps> = ({ data }) => {
     }
         
     if (!isSignedIn || !user) {
-        return <div>You are not signed in.</div>;
+        // return <div>You are not signed in.</div>;
+        return <Loader/>;
     }
 
     const userId = user.id;
@@ -72,6 +74,24 @@ const Card: React.FC<CardProps> = ({ data }) => {
         }
     };
 
+    const removeFromCart = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.delete(`http://localhost:5000/api/carts/${userId}/remove/${data._id}`);
+
+            if (response.status === 200) {
+                toast.success("Product removed from cart successfully!")
+            } else {
+                toast.error("Failed to remove product from cart!")
+            }
+        } catch (error) {
+            toast.error("Failed to remove product from cart!" + error)
+        } finally {
+            setLoading(false);
+            window.location.reload();
+        }
+    };
+
     const addToCart = async () => {
         try {
         setLoading(true);
@@ -90,7 +110,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
         setLoading(false);
         }
     };
-
+    
     const navigate = useNavigate();
     const showDetails = () => {
         navigate('/product',
@@ -101,14 +121,13 @@ const Card: React.FC<CardProps> = ({ data }) => {
             });
     }
 
+
   return (
     
     <div className=" border lg:m-2.5 sm:m-1.5 rounded-md hover:shadow flex flex-col items-center relative h-max sm:h-max sm:w-auto">
         <div className=" flex flex-col absolute md:right-4 md:top-4 lg:top-4 lg:right-4 sm:top-2 sm:right-2">
-            <SignedIn>
-                <Heart color="orange" className=" mb-1 sm:hidden hover:cursor-pointer" onClick={addToWishlist}/>
-                <Heart size={20} color="orange" className=" mb-1 lg:hidden md:hidden hover:cursor-pointer" onClick={addToWishlist} />
-            </SignedIn>
+            <X color="orange" className=" mb-1 sm:hidden hover:cursor-pointer" onClick={removeFromCart}/>
+            <X size={20} color="orange" className=" mb-1 lg:hidden md:hidden hover:cursor-pointer" onClick={removeFromCart} />
 
 
             
@@ -121,7 +140,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
                     
                     <div className=" h-full m-2.5 rounded-md flex flex-col items-center relative">
                         <div className=" flex flex-col absolute right-4 top-4 ">
-                            <Heart color="orange" className=" mb-1 hover:cursor-pointer" onClick={addToWishlist}/>
+                            <Heart color="orange" className=" mb-1 hover:cursor-pointer"/>
                         </div>
                         <div className=" h-4/6 w-full mt-4 flex justify-center items-center ">
                             <img src={`http://localhost:5000/${data?.image}`} alt="" className=" mt-16 mb-8 w-2/3 h-auto mx-4 "/>
@@ -134,8 +153,8 @@ const Card: React.FC<CardProps> = ({ data }) => {
                             </div>
                             <div className=" mb-1 text-sm text-slate-500">{data?.description}</div>
                             <div className=" mt-2 w-full flex justify-between items-center justify-self-end">
-                                <Button onClick={addToCart} className="w-[49%] bg-secondary-color hover:bg-secondary-color">Add To Cart</Button>
-                                <Button onClick={()=>{showDetails()}} className="w-[49%] bg-transparent border text-secondary-color border-secondary-color hover:bg-transparent">Details</Button>
+                                <Button onClick={addToCart} className="w-[49%] bg-secondary-color">Add To Cart</Button>
+                                <Button className="w-[49%] bg-transparent border text-secondary-color border-secondary-color">Checkout</Button>
                             </div>
                         </div>
                     </div>
@@ -159,4 +178,4 @@ const Card: React.FC<CardProps> = ({ data }) => {
   );
 };
 
-export default Card;
+export default CartCard;
