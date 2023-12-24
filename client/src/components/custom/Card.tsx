@@ -6,18 +6,22 @@ import { Badge } from "../ui/badge"
 import {
     Dialog,
     DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
 import { Button } from "../ui/button"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
+import { redirect } from "react-router-dom";
 
 import { useUser } from "@clerk/clerk-react";
 import Loader from "./Loader"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
-import { SignedIn } from "@clerk/clerk-react"
+import { SignedIn, SignedOut } from "@clerk/clerk-react"
 
 interface CardProps {
   data: {
@@ -52,7 +56,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
     const addToWishlist = async () => {
         try {
             setLoading(true);
-            const response = await axios.post(`/api/wishlist/${userId}/add`, {
+            const response = await axios.post(`http://localhost:5000/api/wishlist/${userId}/add`, {
                 productId: data._id,
             });
 
@@ -96,8 +100,6 @@ const Card: React.FC<CardProps> = ({ data }) => {
                 }
             });
     }
-
-    if(loading) return <Loader/>
 
   return (
     

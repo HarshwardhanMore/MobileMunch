@@ -1,11 +1,14 @@
-import { Button } from '@/components/ui/button';
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from '@/components/ui/input';
+import React, { useEffect, useState } from 'react';
+import { Filter } from 'lucide-react';
+import { toast } from 'react-toastify';
 import { useUser } from "@clerk/clerk-react";
-import axios from "axios";
-import { useEffect, useState } from 'react';
-import CartCard from "../CartCard";
 import Loader from "../Loader";
+import axios from "axios";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import CartCard from "../CartCard";
+import { Input } from '@/components/ui/input';
+import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from '@/components/ui/button';
 
 const CartPage = () => {
 
@@ -14,7 +17,7 @@ const CartPage = () => {
 
   const { isSignedIn, user, isLoaded } = useUser();
 
-  if (!isLoaded || loading) {
+  if (!isLoaded) {
       return <Loader/>;
   }
       
@@ -29,7 +32,7 @@ const CartPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/carts/${userId}`); // Replace with your API endpoint
+        const response = await axios.get(`http://localhost:5000/api/carts/${userId}`); // Replace with your API endpoint
         setData(response.data.products);
       } catch (error) {
         console.error('Error fetching data:', error);

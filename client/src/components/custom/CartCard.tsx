@@ -6,16 +6,20 @@ import { Badge } from "../ui/badge"
 import {
     Dialog,
     DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
 import { Button } from "../ui/button"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
+import { redirect } from "react-router-dom";
 
 import { useUser } from "@clerk/clerk-react";
 import Loader from "./Loader"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 
 
@@ -31,7 +35,7 @@ import axios from "axios"
 //   };
 // }
 
-const CartCard = ({ data }: any) => {
+const CartCard = ({ data, wishlist }: any) => {
     
     const [loading, setLoading] = useState(false);
 
@@ -48,13 +52,32 @@ const CartCard = ({ data }: any) => {
 
     const userId = user.id;
 
-    if(loading) return <Loader/>;
+    console.log(userId);
+    
 
+    const addToWishlist = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.post(`http://localhost:5000/api/wishlist/${userId}/add`, {
+                productId: data._id,
+            });
+
+            if (response.status === 200) {
+                toast.success("Product added to wishlist successfully!")
+            } else {
+                toast.error("Failed to add product to wishlist!")
+            }
+        } catch (error) {
+            toast.error("Failed to add product to wishlist!" + error)
+        } finally {
+        setLoading(false);
+        }
+    };
 
     const removeFromCart = async () => {
         try {
             setLoading(true);
-            const response = await axios.delete(`/api/carts/${userId}/remove/${data._id}`);
+            const response = await axios.delete(`http://localhost:5000/api/carts/${userId}/remove/${data._id}`);
 
             if (response.status === 200) {
                 toast.success("Product removed from cart successfully!")
@@ -72,7 +95,7 @@ const CartCard = ({ data }: any) => {
     const addToCart = async () => {
         try {
         setLoading(true);
-        const response = await axios.post(`/api/carts/${userId}/add`, {
+        const response = await axios.post(`http://localhost:5000/api/carts/${userId}/add`, {
             productId: data._id,
         });
 

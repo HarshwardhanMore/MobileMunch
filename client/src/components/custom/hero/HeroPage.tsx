@@ -1,15 +1,19 @@
-import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import Blogs from "./Blogs";
-import Brands from "./Brands";
+import Navbar from "../Navbar";
 import Carousel1 from "./Carousel1";
-import Carousel2 from "./Carousel2";
 import FeaturedProducts from "./FeaturedProducts";
 import OsSection from "./OsSection";
+import { ChevronRight } from "lucide-react";
+import Carousel2 from "./Carousel2";
+import Brands from "./Brands";
+import Bottom from "./Bottom";
+import Blogs from "./Blogs";
+import OtherAccesories from "./OtherAccesories";
 
-import Footer from "../Footer";
+import { Routes, Route } from "react-router-dom";
 import Carousel1Sm from "./Carousel1Sm";
 import Carousel2Sm from "./Carousel2Sm";
+import Footer from "../Footer";
 
 function HeroPage({ data }: any) {
   return (

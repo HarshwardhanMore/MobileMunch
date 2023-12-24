@@ -1,19 +1,20 @@
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { useUser } from "@clerk/clerk-react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
 import { Filter } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useUser } from "@clerk/clerk-react";
 import Loader from "../Loader";
+import axios from "axios";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import WishlistCard from "../WishlistCard";
 
 const WishlistPage = () => {
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { isSignedIn, user, isLoaded } = useUser();
 
-  if (!isLoaded || loading) {
+  if (!isLoaded) {
       return <Loader/>;
   }
       
@@ -28,8 +29,7 @@ const WishlistPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-        const response = await axios.get(`/api/wishlist/${userId}`); 
+        const response = await axios.get(`http://localhost:5000/api/wishlist/${userId}`); 
         setData(response.data.products);
       } catch (error) {
         console.error('Error fetching data:', error);

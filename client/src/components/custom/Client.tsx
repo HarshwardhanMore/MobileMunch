@@ -1,22 +1,23 @@
-import { useUser } from "@clerk/clerk-react"
-import axios from "axios"
-import { useEffect, useState } from "react"
+import HeroPage from "./hero/HeroPage"
 import { Route, Routes } from "react-router-dom"
-import Loader from "./Loader"
 import Navbar from "./Navbar"
-import CartPage from "./Pages/CartPage"
 import Product from "./Pages/Product"
 import Products from "./Pages/Products"
-import UploadProduct from "./Pages/UploadProduct"
 import WishlistPage from "./Pages/WishlistPage"
-import HeroPage from "./hero/HeroPage"
+import CartPage from "./Pages/CartPage"
+import UploadProduct from "./Pages/UploadProduct"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import Loader from "./Loader"
+import Brands from "./Pages/BrandsPage"
+import { useUser } from "@clerk/clerk-react"
 
 
 function Client() {
 
   
 
-  const { isLoaded } = useUser();
+  const { isSignedIn, user, isLoaded } = useUser();
 
   if(!isLoaded){
     return <Loader/>
@@ -27,7 +28,7 @@ function Client() {
   // }
 
 
-  // const userId = user?.id;
+  const userId = user?.id;
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ function Client() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('/api/products'); // Replace with your API endpoint
+        const response = await axios.get('http://localhost:5000/api/products'); // Replace with your API endpoint
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
