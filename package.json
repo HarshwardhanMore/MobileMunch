@@ -1,0 +1,16 @@
+{
+  "name": "mobilemunch",
+  "version": "1.0.0",
+  "description": "1) Clone the repository or Download and unzip the repository\r 2) Open one terminal in the root directory.\r 3) In Terminal 1, run the commands <br /><br />\r      a) **cd server** <br />\r             ![image](https://github.com/HarshwardhanMore/MobileMunch/assets/87003053/677fbdcb-6db8-4ada-9559-4160625b46e5) <br />\r      b) **npm install** <br />\r             ![image](https://github.com/HarshwardhanMore/MobileMunch/assets/87003053/6b0106c3-0908-4e63-bf87-600989b6a8a3) <br />\r      c) **node index.js** <br />\r             ![image](https://github.com/HarshwardhanMore/MobileMunch/assets/87003053/0adfd724-a9e8-41fb-8658-08fc7cbe8fd4) <br />",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && node index.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
