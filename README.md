@@ -1,4 +1,4 @@
-# Procedure to Run Project 
+# Instructions to Run The Project 
 
 1) Clone the repository or Download and unzip the repository
 2) Open one terminal in the root directory.
